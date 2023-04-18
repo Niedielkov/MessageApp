@@ -8,7 +8,7 @@ namespace MessageApp.Models
         public string UserId { get; set; }
         public User User { get; set; }
         public int ChatId { get; set; }
-        public ChatUser Chat { get; set; }
+        public Chat Chat { get; set; }
         public UserRole Role { get; set; }
     }
 }
