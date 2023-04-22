@@ -1,0 +1,20 @@
+﻿<div class="box">
+    <form asp-controller="Account" asp-action="Register">
+        <h2>Register</h2>
+        <div class="inputBox">
+            <input type="text" name="username" required="required" />
+            <span>Username</span>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input type="password" name="password" required="required" />
+            <span>Password</span>
+            <i></i>
+        </div>
+        <div class="links">
+            <a href="#">Have account</a>
+            <a asp-controller="Account" asp-action="Login">Login</a>
+        </div>
+        <input type="submit" value="Register" />
+    </form>
+</div>

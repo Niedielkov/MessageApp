@@ -1,0 +1,7 @@
+﻿@using System.Security.Claims;
+
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+}
+
+<h1 style="color: #fff">user-id -> @userId</h1>
