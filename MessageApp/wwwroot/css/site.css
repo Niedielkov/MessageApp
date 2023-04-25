@@ -1,167 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
+    color: #000;
+}
+
+.main {
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
-    background: #23242a;
+    max-height: 100vh;
 }
 
-.box {
-    position: relative;
-    width: 380px;
-    height: 420px;
-    background: #1c1c1c;
-    border-radius: 8px;
-    overflow: hidden;
+.sidebar {
+    width: 24%;
+    background: rgb(27, 27, 27);
+    color: #fff;
 }
 
-    .box::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 380px;
-        height: 420px;
-        background: linear-gradient(0deg,transparent, transparent, #45f3ff, #45f3ff, #45f3ff);
-        z-index: 1;
-        transform-origin: bottom right;
-        animation: animate 6s linear infinite;
-    }
-
-    .box::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 380px;
-        height: 420px;
-        background: linear-gradient(0deg,transparent, transparent, #45f3ff, #45f3ff, #45f3ff);
-        z-index: 1;
-        transform-origin: bottom right;
-        animation: animate 6s linear infinite;
-        animation-delay: -3s;
-    }
-
-@keyframes animate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.profile {
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgb(46, 45, 45);
 }
 
-.box form {
-    position: absolute;
-    inset: 4px;
-    background: #222;
-    padding: 50px 40px;
-    border-radius: 8px;
-    z-index: 2;
+.profile img {
+    width: 70px;
+    height: 70px;
+    border-radius: 30%;
+}
+
+.profile-data {
+    padding: 10px;
+}
+
+.profile-data h3 {
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+
+.profile-data span {
+    color: rgb(148, 147, 147);
+}
+
+.sidebar .title {
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+.sidebar .title span {
+    color: rgb(35, 35, 212);
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.online-ids {
+    padding: 0 10px;
+}
+
+.online-ids img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.messages .recents {
+    display: flex;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.recents img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.recent-data {
+    padding: 10px;
+}
+
+.recent-data h3 {
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 17px;
+}
+
+.recent-data span {
+    color: rgb(148, 147, 147);
+    font-size: 13px;
+}
+
+.messages .active {
+    background: rgb(41, 40, 40);
+}
+
+.recents:hover {
+    background: rgb(41, 40, 40);
+}
+
+.message-box {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-}
-
-.box form h2 {
-    color: #fff;
-    font-weight: 500;
-    text-align: center;
-    letter-spacing: 0.1rem;
-}
-
-.box form .inputBox {
+    width: 55%;
+    background: rgb(15, 15, 15);
     position: relative;
-    width: 300px;
-    margin-top: 35px;
 }
 
-.box form .inputBox input {
-    position: relative;
-    width: 100%;
-    padding: 20px 10px 10px;
-    background: transparent;
-    outline: none;
-    border: none;
-    box-shadow: none;
-    color: #23242a;
-    font-size: 1em;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
-    z-index: 10;
-}
-
-.box form .inputBox span {
-    position: absolute;
-    left: 0;
-    padding: 20px 0px 10px;
-    pointer-events: none;
-    color: #8f8f8f;
-    font-size: 1em;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
-}
-
-.box form .inputBox input:valid ~ span,
-.box form .inputBox input:focus ~ span {
-    color: #fff;
-    font-size: 0.75em;
-    transform: translateY(-34px);
-}
-
-.box form .inputBox i {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: #fff;
-    border-radius: 4px;
-    overflow: hidden;
-    transition: 0.5s;
-    pointer-events: none;
-}
-
-.box form .inputBox input:valid ~ i,
-.box form .inputBox input:focus ~ i {
-    height: 44px;
-}
-
-.box form .links {
+.box-top {
     display: flex;
-    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgb(22, 22, 22);
 }
 
-.box form .links a {
-    margin: 10px 0;
-    font-size: 0.75em;
-    color: #8f8f8f;
-    text-decoration: none;
+.box-top .recents {
+    display: flex;
 }
 
-.box form .links a:hover,
-.box form .links a:nth-child(2) {
-    color: #fff;
+.message-box .recents:hover {
+    background: none;
 }
 
-.box form input[type="submit"] {
-    border: none;
-    outline: none;
-    padding: 9px 25px;
-    background: #fff;
-    cursor: pointer;
-    font-size: 0.9em;
-    border-radius: 4px;
-    font-weight: 600;
-    width: 100px;
+.call-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15px 20px;
+}
+
+.action-icons {
     margin-top: 10px;
 }
 
-.box form input[type="submit"]:active {
-    opacity: 0.8;
+.action-icons i {
+    margin: 10px;
+    color: rgb(99, 98, 98);
+    cursor: pointer;
+}
+
+.box {
+    padding-left: 1rem;
+    padding-bottom: 6rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.box .recents {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.box .recents:first-child {
+    margin-top: auto;
+}
+
+.box .recents img {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.box h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: rgb(211, 206, 206);
+}
+
+.box .time {
+    background: none;
+    color: rgb(99, 98, 98);
+    font-size: 12px;
+}
+
+.box span {
+    background: gray;
+    color: #fff;
+    padding: 6px 20px;
+    font-size: 16px;
+    border-radius: 0px 30px 30px 30px;
+}
+
+.input-box {
+    background: rgb(22, 22, 22);
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.input-box img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px 20px;
+}
+
+.input-box input {
+    background: transparent;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 13px;
+    width: 65%;
+}
+
+.input-box i {
+    margin: 30px 10px;
+    color: rgb(99, 98, 98);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.input-box .send {
+    color: blue;
+}
+
+.contact {
+    padding: 20px;
+    color: #fff;
+    width: 25%;
+    background: #000;
+}
+
+.contact-detail {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.contact-detail img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.contact-icons {
+    color: rgb(99, 98, 98);
+    margin-top: 10px;
+}
+
+.contact-icons i {
+    margin: 10px;
+    border: 1px solid rgb(99, 98, 98);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.contact-icons i:hover {
+    background: rgb(99, 98, 98);
+    color: #fff;
+    transition: all 0.3s;
 }
