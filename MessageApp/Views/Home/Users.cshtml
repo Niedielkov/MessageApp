@@ -1,0 +1,18 @@
+﻿@model IEnumerable<User>
+
+<div class="users">
+    <h3 class="title">Users</h3>
+    @foreach(var user in Model)
+    {
+        <div class="recents">
+            <div class="recent-img">
+                <img src="~/img/polygon.jpg" />
+            </div>
+            <div class="recent-data">
+                <a asp-controller="Home" asp-action="CreateChat" asp-route-userId="@user.Id">
+                    <h3>@user.UserName</h3>
+                </a>
+            </div>
+        </div>
+    }
+</div>

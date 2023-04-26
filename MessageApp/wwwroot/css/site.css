@@ -64,18 +64,6 @@ body {
     margin-left: 5px;
 }
 
-.online-ids {
-    padding: 0 10px;
-}
-
-.online-ids img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
 .messages .recents {
     display: flex;
     padding: 5px 10px;
@@ -110,6 +98,15 @@ body {
 
 .recents:hover {
     background: rgb(41, 40, 40);
+}
+
+.welcome {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    color: #fff;
 }
 
 .message-box {
@@ -266,4 +263,15 @@ body {
     background: rgb(99, 98, 98);
     color: #fff;
     transition: all 0.3s;
+}
+
+.users {
+    flex-grow: 1;
+    background: #000;
+}
+
+.users .recents {
+    display: flex;
+    padding: 5px 10px;
+    cursor: pointer;
 }

@@ -1,0 +1,70 @@
+﻿@model Chat
+
+@using System.Security.Claims;
+
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+}
+
+<div class="message-box">
+    <div class="box-top">
+        <div class="recents">
+            <div class="recent-img">
+                <img src="~/img/polygon.jpg" />
+            </div>
+            <div class="recent-data">
+                <h3>@Model.ChatUsers.FirstOrDefault(u => u.UserId != userId).User.UserName</h3>
+                <span>Online Now</span>
+            </div>
+        </div>
+        <div class="call-actions">
+            <div class="action-icons">
+                <i class="fas fa-phone-alt"></i>
+                <i class="fas fa-video"></i>
+                <i class="fas fa-image"></i>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        @for (int i = 0; i < 2; i++)
+        {
+            <div class="recents">
+                <div class="recent-img">
+                    <img src="~/img/polygon.jpg" />
+                </div>
+                <div class="recent-data">
+                    <h3>@Model.ChatUsers.FirstOrDefault(u => u.UserId != userId).User.UserName <span class="time">10:02 AM</span></h3>
+                    <span>Hi, What's up?</span>
+                </div>
+            </div>
+            <div class="recents">
+                <div class="recent-img">
+                    <img src="~/img/polygon.jpg" />
+                </div>
+                <div class="recent-data">
+                    <h3>You: <span class="time">10:08 AM</span></h3>
+                    <span>KJkjnkcnaskjcb  acvkjbnsdakjcvbnksd ksdjvsdnvksjdnv</span>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="input-box">
+        <img src="~/img/polygon.jpg" />
+        <input type="text" placeholder="Your Message..." />
+        <i class="fas fa-microphone"></i>
+        <i class="fas fa-paperclip"></i>
+        <i class="fas fa-paper-plane send"></i>
+    </div>
+</div>
+<div class="contact">
+    <div class="contact-detail">
+        <img src="~/img/polygon.jpg" />
+        <h3>@Model.ChatUsers.FirstOrDefault(u => u.UserId != userId).User.UserName</h3>
+        <a href="#">user@gmail.com</a>
+        <div class="contact-icons">
+            <i class="fas fa-phone-alt"></i>
+            <i class="fas fa-video"></i>
+            <i class="fas fa-image"></i>
+        </div>
+    </div>
+</div>

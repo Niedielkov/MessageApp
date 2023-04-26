@@ -11,80 +11,9 @@
 <body>
 
     <div class="main">
-        <div class="sidebar">
-            <div class="profile">
-                <div class="profile-img">
-                    <img src="~/img/polygon.jpg" />
-                </div>
-                <div class="profile-data">
-                    <h3>Nedelkov</h3>
-                    <span>Web Developer</span>
-                </div>
-            </div>
-            <div class="online">
-                <h3 class="title">Online <span>(+5)</span></h3>
-                <div class="online-ids">
-                    <img src="~/img/polygon.jpg" />
-                    <img src="~/img/polygon.jpg" />
-                    <img src="~/img/polygon.jpg" />
-                    <img src="~/img/polygon.jpg" />
-                </div>
-            </div>
-            <div class="messages">
-                <h3 class="title">Messages <span>(+10)</span></h3>
-                <div class="recents active">
-                    <div class="recent-img">
-                        <img src="~/img/polygon.jpg" />
-                    </div>
-                    <div class="recent-data">
-                        <h3>Sia David</h3>
-                        <span>You: Thanks ;)</span>
-                    </div>
-                </div>
-                <div class="recents">
-                    <div class="recent-img">
-                        <img src="~/img/polygon.jpg" />
-                    </div>
-                    <div class="recent-data">
-                        <h3>Maria</h3>
-                        <span>Maria: Hello!</span>
-                    </div>
-                </div>
-                <div class="recents">
-                    <div class="recent-img">
-                        <img src="~/img/polygon.jpg" />
-                    </div>
-                    <div class="recent-data">
-                        <h3>Anastasiya</h3>
-                        <span>You: What's up???</span>
-                    </div>
-                </div>
-                <div class="recents">
-                    <div class="recent-img">
-                        <img src="~/img/polygon.jpg" />
-                    </div>
-                    <div class="recent-data">
-                        <h3>Jack</h3>
-                        <span>Jack: You are crazy!</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <vc:sidebar></vc:sidebar>
 
         @RenderBody()
-
-        <div class="contact">
-            <div class="contact-detail">
-                <img src="~/img/polygon.jpg" />
-                <h3>Jack</h3>
-                <a href="#">jack@gmail.com</a>
-                <div class="contact-icons">
-                    <i class="fas fa-phone-alt"></i>
-                    <i class="fas fa-video"></i>
-                    <i class="fas fa-image"></i>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

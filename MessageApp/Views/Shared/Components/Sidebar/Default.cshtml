@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Chat>
+
+@using System.Security.Claims;
+
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+}
+
+<div class="sidebar">
+    <div class="profile">
+        <div class="profile-img">
+            <img src="~/img/polygon.jpg" />
+        </div>
+        <div class="profile-data">
+            <h3>@User.Identity.Name</h3>
+            <span>@User.FindFirst(ClaimTypes.NameIdentifier).Value</span>
+        </div>
+    </div>
+    <div class="messages">
+        <h3 class="title">Messages</h3>
+        @foreach(var chat in Model)
+        {
+            <div class="recents">
+                <div class="recent-img">
+                    <img src="~/img/polygon.jpg" />
+                </div>
+                <div class="recent-data">
+                    <h3>@chat.ChatUsers.FirstOrDefault(u => u.UserId != userId).User.UserName</h3>
+                    <span>You: Thanks ;)</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
