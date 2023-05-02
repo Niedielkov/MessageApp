@@ -13,7 +13,7 @@
         </div>
         <div class="profile-data">
             <h3>@User.Identity.Name</h3>
-            <span>@User.FindFirst(ClaimTypes.NameIdentifier).Value</span>
+            <span>user</span>
         </div>
     </div>
     <div class="messages">
@@ -25,7 +25,9 @@
                     <img src="~/img/polygon.jpg" />
                 </div>
                 <div class="recent-data">
-                    <h3>@chat.ChatUsers.FirstOrDefault(u => u.UserId != userId).User.UserName</h3>
+                    <a asp-controller="Home" asp-action="Chat" asp-route-id="@chat.Id">
+                        <h3>@chat.ChatUsers.FirstOrDefault(u => u.UserId != userId).User.UserName</h3>
+                    </a>
                     <span>You: Thanks ;)</span>
                 </div>
             </div>

@@ -61,7 +61,11 @@ namespace MessageApp.Controllers
 
         public IActionResult Users()
         {
-            var users = _context.Users.Where(u => u.Id != User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var users = _context.Users
+                .Where(u => u.Id != User.FindFirst(ClaimTypes.NameIdentifier).Value &&
+                    !u.ChatUsers.Any(c => c.Chat.ChatUsers
+                        .Any(c => c.UserId == User.FindFirst(ClaimTypes.NameIdentifier).Value)))
+                .ToList();
 
             return View(users);
         }

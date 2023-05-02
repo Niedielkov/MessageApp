@@ -4,6 +4,6 @@ namespace MessageApp.Models
 {
     public class User : IdentityUser
     {
-        public ICollection<ChatUser> Chats { get; set; }
+        public ICollection<ChatUser> ChatUsers { get; set; }
     }
 }
