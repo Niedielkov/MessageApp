@@ -40,6 +40,7 @@ body {
 }
 
 .profile-data {
+    flex-grow: 1;
     padding: 10px;
 }
 
@@ -50,6 +51,19 @@ body {
 
 .profile-data span {
     color: rgb(148, 147, 147);
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.logout i {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .sidebar .title {
@@ -136,7 +150,7 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 15px 20px;
+    padding-top: 20px;
 }
 
 .action-icons {
@@ -206,10 +220,11 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin: 10px 20px;
+    margin: 10px 10px;
 }
 
 .input-box input {
+    flex-grow: 1;
     background: transparent;
     margin-left: 20px;
     color: #fff;
