@@ -8,6 +8,5 @@
         public DateTime TimeStamp { get; set; }
         public int ChatId { get; set; }
         public Chat Chat { get; set; }
-
     }
 }

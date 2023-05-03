@@ -172,6 +172,15 @@ body {
     overflow: auto;
 }
 
+    .box::-webkit-scrollbar {
+        width: 0.5rem;
+        background-color: transparent;
+    }
+
+    .box::-webkit-scrollbar-thumb {
+        background-color: gray;
+    }
+
 .box .recents {
     display: flex;
     flex-direction: row;
@@ -224,23 +233,20 @@ body {
 }
 
 .input-box input {
-    flex-grow: 1;
+    flex-grow: 5;
     background: transparent;
     margin-left: 20px;
     color: #fff;
-    font-size: 13px;
-    width: 65%;
+    font-size: 15px;
 }
 
-.input-box i {
-    margin: 30px 10px;
-    color: rgb(99, 98, 98);
-    font-size: 18px;
+.input-box button {
+    flex-grow: 1;
     cursor: pointer;
 }
 
-.input-box .send {
-    color: blue;
+.input-box button i {
+    font-size: 16px;
 }
 
 .contact {

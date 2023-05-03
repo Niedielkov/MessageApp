@@ -69,5 +69,22 @@ namespace MessageApp.Controllers
 
             return View(users);
         }
+
+        public async Task<IActionResult> CreateMessage(int chatId, string text)
+        {
+            var message = new Message
+            {
+                ChatId = chatId,
+                Text = text,
+                SenderName = User.Identity.Name,
+                TimeStamp = DateTime.Now
+            };
+
+            _context.Messages.Add(message);
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
     }
 }

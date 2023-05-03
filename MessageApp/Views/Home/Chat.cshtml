@@ -26,35 +26,27 @@
         </div>
     </div>
     <div class="box">
-        @for (int i = 0; i < 10; i++)
+        @foreach(var message in Model.Messages)
         {
             <div class="recents">
                 <div class="recent-img">
                     <img src="~/img/polygon.jpg" />
                 </div>
                 <div class="recent-data">
-                    <h3>@Model.ChatUsers.FirstOrDefault(u => u.UserId != userId).User.UserName <span class="time">10:02 AM</span></h3>
-                    <span>Hi, What's up?</span>
-                </div>
-            </div>
-            <div class="recents">
-                <div class="recent-img">
-                    <img src="~/img/polygon.jpg" />
-                </div>
-                <div class="recent-data">
-                    <h3>You: <span class="time">10:08 AM</span></h3>
-                    <span>KJkjnkcnaskjcb  acvkjbnsdakjcvbnksd ksdjvsdnvksjdnv</span>
+                    <h3>@message.SenderName <span class="time">@message.TimeStamp</span></h3>
+                    <span>@message.Text</span>
                 </div>
             </div>
         }
     </div>
-    <div class="input-box">
+    <form class="input-box" asp-controller="Home" asp-action="CreateMessage">
         <img src="~/img/polygon.jpg" />
-        <input type="text" placeholder="Your Message..." />
-        <i class="fas fa-microphone"></i>
-        <i class="fas fa-paperclip"></i>
-        <i class="fas fa-paper-plane send"></i>
-    </div>
+        <input type="hidden" name="chatId" value="@Model.Id" />
+        <input type="text" name="text" id="message-input" placeholder="Your Message..." />
+        <button type="submit">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </form>
 </div>
 <div class="contact">
     <div class="contact-detail">
