@@ -1,4 +1,5 @@
 using MessageApp.Database;
+using MessageApp.Hubs;
 using MessageApp.Models;
 using MessageApp.Repositories;
 using Microsoft.AspNetCore.Identity;
@@ -24,6 +25,8 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 
 builder.Services.AddTransient<IAccountRepository, AccountRepository>();
 
+builder.Services.AddSignalR();
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
@@ -33,6 +36,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapHub<ChatHub>("/chatHub");
 
 app.MapControllerRoute(
     name: "default",

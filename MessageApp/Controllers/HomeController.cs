@@ -1,8 +1,10 @@
 ﻿using MessageApp.Database;
 using MessageApp.Enums;
+using MessageApp.Hubs;
 using MessageApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -70,7 +72,7 @@ namespace MessageApp.Controllers
             return View(users);
         }
 
-        public async Task<IActionResult> CreateMessage(int chatId, string text)
+        public async Task<IActionResult> CreateMessage(int chatId, string text, [FromServices] IHubContext<ChatHub> chat)
         {
             var message = new Message
             {
@@ -83,6 +85,14 @@ namespace MessageApp.Controllers
             _context.Messages.Add(message);
 
             await _context.SaveChangesAsync();
+
+            await chat.Clients.Group(chatId.ToString())
+                .SendAsync("RecieveMessage", new
+                {
+                    Text = message.Text,
+                    SenderName = message.SenderName,
+                    TimeStamp = message.TimeStamp.ToString("dd/MM/yyyy hh:mm:ss")
+                });
 
             return Ok();
         }

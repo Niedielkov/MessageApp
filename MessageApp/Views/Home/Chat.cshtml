@@ -39,7 +39,7 @@
             </div>
         }
     </div>
-    <form class="input-box" asp-controller="Home" asp-action="CreateMessage">
+    <form class="input-box" onsubmit="sendMessage(event)" asp-controller="Home" asp-action="CreateMessage">
         <img src="~/img/polygon.jpg" />
         <input type="hidden" name="chatId" value="@Model.Id" />
         <input type="text" name="text" id="message-input" placeholder="Your Message..." />
@@ -60,3 +60,63 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/signalr.min.js"></script>
+    <script src="~/js/messagebuilder.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        var connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .build();
+
+        var _connectionId = '';
+
+        connection.on("RecieveMessage", function (data) {
+            var recentImage = recentImageBuilder()
+                .createRecentImage()
+                .withImage("/img/polygon.jpg")
+                .build();
+
+            var recentData = recentDataBuilder()
+                .createRecentData()
+                .withSenderName(data.senderName)
+                .withTimeStamp(data.timeStamp)
+                .withText(data.text)
+                .build();
+
+            var recents = document.createElement('div');
+            recents.className = 'recents';
+            recents.appendChild(recentImage);
+            recents.appendChild(recentData);
+
+            document.querySelector('.box').append(recents);
+        })
+
+        connection.start()
+            .then(function () {
+                connection.invoke('joinChat', '@Model.Id');
+            })
+            .catch(function (err) {
+                console.log(err);
+            })
+
+        window.addEventListener('onunload', function () {
+            connection.invoke('leaveChat', '@Model.Id');
+        })
+
+        var sendMessage = function(event) {
+            event.preventDefault();
+
+            var data = new FormData(event.target);
+            document.getElementById('message-input').value = '';
+            axios.post('/Home/CreateMessage', data)
+                .then(res => {
+                    console.log("Message Sent!")
+                })
+                .catch(err => {
+                    console.log("Failed to send message!")
+                })
+        }
+    </script>
+}
